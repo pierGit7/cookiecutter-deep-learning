@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - _self_
+  - model: default
+  - data: default
+
+framework: "{{ cookiecutter.dl_framework }}"
+
+{% if cookiecutter.dl_framework == 'keras3' -%}
+backend: "tensorflow" # Or "torch", "jax"
+{%- endif %}
+
+training:
+  epochs: 10
+  lr: 0.001
+  batch_size: 32
+
+seed: 42

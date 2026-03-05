@@ -1,61 +1,46 @@
 # {{cookiecutter.project_name}}
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
-
 {{cookiecutter.description}}
 
 ## Project Organization
 
 ```
 ├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── Makefile           <- Makefile with convenience commands like `make train`
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+├── configs            <- Hydra configuration files
+│   ├── model          <- Model configurations
+│   ├── data           <- Data configurations
+│   └── train.yaml     <- Main training configuration
 │
-├── models             <- Trained and serialized models, model predictions, or model summaries
+├── checkpoints        <- Trained and serialized models or checkpoints
 │
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
+├── logs               <- Logs from experiment trackers like TensorBoard or WandB
 │
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         {{ cookiecutter.module_name }} and configuration for tools like black
+├── notebooks          <- Jupyter notebooks for exploration
 │
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+├── pyproject.toml     <- Project configuration file with dependencies and tool configs
 │
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
+├── train.py           <- Main training entry point
 │
 └── {{ cookiecutter.module_name }}   <- Source code for use in this project.
     │
     ├── __init__.py             <- Makes {{ cookiecutter.module_name }} a Python module
     │
-    ├── config.py               <- Store useful variables and configuration
+    ├── data                    
+    │   ├── __init__.py
+    │   └── dataset.py          <- Data loaders and dataset definitions
     │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
+    ├── models                  
     │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
+    │   └── architecture.py     <- Neural network architecture definitions
     │
-    └── plots.py                <- Code to create visualizations
+    └── utils                   <- Utilities for metrics, logging, etc.
+        └── __init__.py
 ```
 
 --------
-
